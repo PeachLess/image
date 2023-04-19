@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "796240754008",
+    "firebase_url": "https://manlang-default-rtdb.firebaseio.com",
+    "project_id": "manlang",
+    "storage_bucket": "manlang.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:796240754008:android:4b32cca2ad8ee81689e12d",
+        "android_client_info": {
+          "package_name": "com.example.image"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "796240754008-41546nfjgnejfeapuh6nqb804abstd3q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBK-fo_YCdTd8lcGXYba2pDHl8glB_B5pI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "796240754008-41546nfjgnejfeapuh6nqb804abstd3q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
