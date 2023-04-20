@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
 import './comic.dart';
@@ -322,22 +323,32 @@ class Comics with ChangeNotifier {
     return [..._items];
   }
 
-  // void getComics() {
-  // final url = Uri.https('manlang-default-rtdb.firebaseio.com', 'comics.json');
-  // final response = await http.get(url);
-  // print(response.body);
-  // Stream<List<Comic>> readComics() =>
-  //     FirebaseFirestore.instance.collection('comics');
-  // print('pop ${FirebaseFirestore.instance.collection('comics').get()}');
-  // }
-
   Future<void> getComics() async {
-    // Get docs from collection reference
     QuerySnapshot querySnapshot =
         await FirebaseFirestore.instance.collection('comics').get();
-    // Get data from docs and convert map to List
-    final allData = querySnapshot.docs.map((doc) => doc.data()).toList();
-    print(allData);
+    final allData = querySnapshot.docs
+        .map((doc) => doc.data() as Map<String, dynamic>)
+        .toList();
+
+    allData.forEach((com) {
+      List<Chapter> rusChapters = [];
+      List<Chapter> engChapters = [];
+      com['chapters']['rus'].values.forEach((ch) {
+        rusChapters.add(Chapter(images: List<String>.from(ch)));
+      });
+      com['chapters']['eng'].values.forEach((ch) {
+        engChapters.add(Chapter(images: List<String>.from(ch)));
+      });
+
+      _items.add(Comic(
+          id: 'g34gg',
+          name: com['name'],
+          description: com['description'],
+          imageUrl: com['imageUrl'],
+          rusChapters: rusChapters,
+          engChapters: engChapters));
+    });
+    notifyListeners();
   }
 
   List<Comic> get favoriteItems {
