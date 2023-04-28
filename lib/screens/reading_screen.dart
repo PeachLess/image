@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:image/providers/comics.dart';
 
 import '../widgets/app_drawer.dart';
 import '../widgets/comic_list.dart';
@@ -13,11 +14,9 @@ class ReadingScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Читаю'),
-        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.search))],
       ),
       body: const ComicList(
-        isFav: false,
-        isReading: true,
+        status: ListComics.reading,
       ),
       drawer: const AppDrawer(),
     );

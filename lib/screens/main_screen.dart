@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:image/providers/comics.dart';
 import 'package:provider/provider.dart';
 
+import '../widgets/app_search.dart';
 import '../widgets/app_drawer.dart';
 import '../widgets/comic_carousel.dart';
 
@@ -26,9 +27,7 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('ManLang'),
-        actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.settings))
-        ],
+        actions: const [AppSearch()],
       ),
       body: SingleChildScrollView(
         child: Column(children: const [

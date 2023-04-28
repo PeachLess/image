@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:image/providers/comics.dart';
 
 import '../widgets/app_drawer.dart';
 import '../widgets/comic_list.dart';
+import '../widgets/app_search.dart';
 
 class CatalogScreen extends StatelessWidget {
   static const routeName = '/catalog';
@@ -13,11 +15,10 @@ class CatalogScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Каталог'),
-        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.search))],
+        actions: const [AppSearch()],
       ),
       body: const ComicList(
-        isFav: false,
-        isReading: false,
+        status: ListComics.catalog,
       ),
       drawer: const AppDrawer(),
     );

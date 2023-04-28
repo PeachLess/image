@@ -86,7 +86,6 @@ class ComicScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton.extended(
           onPressed: () {
-            Provider.of<Comics>(context, listen: false).getComics();
             Navigator.of(context).pushNamed(ReaderScreen.routeName,
                 arguments: Arguments(currComic.id, 0));
             if (!currComic.isReading) startReading(currComic.id);

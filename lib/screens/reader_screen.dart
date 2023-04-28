@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:image/providers/comic.dart';
 import 'package:image/screens/comic_screen.dart';
 import 'package:provider/provider.dart';
@@ -63,16 +64,17 @@ class _ReaderScreenState extends State<ReaderScreen> {
   }
 
   ListView chapters(Chapter chapter) {
-    ListView rusChapters = ListView.builder(
+    ListView chapters = ListView.builder(
       controller: _scrollController,
       itemBuilder: (context, ind) {
-        return Image.network(
-          chapter.images[ind],
+        return CachedNetworkImage(
+          placeholder: (context, url) => const CircularProgressIndicator(),
+          imageUrl: chapter.images[ind],
           fit: BoxFit.cover,
         );
       },
       itemCount: chapter.images.length,
     );
-    return rusChapters;
+    return chapters;
   }
 }

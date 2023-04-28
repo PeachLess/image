@@ -1,66 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/comics.dart';
-import '../screens/comic_screen.dart';
+import './comic_tile.dart';
 
 class ComicList extends StatelessWidget {
-  final bool isFav;
-  final bool isReading;
-  const ComicList({super.key, required this.isFav, required this.isReading});
+  final ListComics status;
+  const ComicList({super.key, required this.status});
 
   @override
   Widget build(BuildContext context) {
-    final comics = isFav
-        ? Provider.of<Comics>(context).favoriteItems
-        : isReading
-            ? Provider.of<Comics>(context).readingItems
-            : Provider.of<Comics>(context).items;
+    dynamic comics;
+    final provider = Provider.of<Comics>(context);
+
+    switch (status) {
+      case ListComics.catalog:
+        comics = provider.items;
+        break;
+      case ListComics.favorite:
+        comics = provider.favoriteItems;
+        break;
+      case ListComics.reading:
+        comics = provider.readingItems;
+        break;
+      default:
+        comics = [];
+        break;
+    }
+
     return ListView.builder(
       itemBuilder: (context, ind) {
-        return GestureDetector(
-          onTap: () => Navigator.of(context)
-              .pushNamed(ComicScreen.routeName, arguments: comics[ind].id),
-          child: Padding(
-            padding: const EdgeInsets.all(10),
-            child: Row(
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: SizedBox(
-                    height: 180,
-                    width: 120,
-                    child: Image.network(
-                      comics[ind].imageUrl,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(15),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          comics[ind].name,
-                          style: const TextStyle(fontSize: 22),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          comics[ind].description,
-                          style:
-                              const TextStyle(fontSize: 14, color: Colors.grey),
-                        )
-                      ],
-                    ),
-                  ),
-                )
-              ],
-            ),
-          ),
-        );
+        return ComicTile(comic: comics[ind]);
       },
       itemCount: comics.length,
     );

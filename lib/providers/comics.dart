@@ -4,6 +4,8 @@ import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
 import './comic.dart';
 
+enum ListComics { catalog, favorite, reading }
+
 class Comics with ChangeNotifier {
   final List<Comic> _items = [
     Comic(

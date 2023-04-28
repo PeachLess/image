@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../providers/comics.dart';
 import '../widgets/app_drawer.dart';
 import '../widgets/comic_list.dart';
 
@@ -13,11 +14,9 @@ class FavoriteScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Избранное'),
-        // actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.search))],
       ),
       body: const ComicList(
-        isFav: true,
-        isReading: false,
+        status: ListComics.favorite,
       ),
       drawer: const AppDrawer(),
     );
