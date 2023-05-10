@@ -14,7 +14,7 @@ class CatalogScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Каталог'),
+        title: const Text('Catalog'),
         actions: const [AppSearch()],
       ),
       body: const ComicList(

@@ -13,7 +13,7 @@ class ReadingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Читаю'),
+        title: const Text('In progress'),
       ),
       body: const ComicList(
         status: ListComics.reading,

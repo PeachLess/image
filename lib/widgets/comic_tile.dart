@@ -15,6 +15,7 @@ class ComicTile extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(10),
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(10),
@@ -34,14 +35,16 @@ class ComicTile extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      comic.name,
+                      comic.engName,
                       style: const TextStyle(fontSize: 22),
                     ),
                     const SizedBox(
                       height: 10,
                     ),
                     Text(
-                      comic.description,
+                      comic.engDescription,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 3,
                       style: const TextStyle(fontSize: 14, color: Colors.grey),
                     )
                   ],

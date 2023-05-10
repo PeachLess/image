@@ -44,6 +44,8 @@ dependencies:
   anim_search_bar: ^2.0.3
   search_page: ^2.3.0
   modal_bottom_sheet: ^2.1.2
+  expandable_text: ^2.3.0
+  scroll_app_bar: ^2.0.0
 
 dev_dependencies:
   flutter_test:

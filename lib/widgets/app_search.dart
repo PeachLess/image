@@ -4,6 +4,8 @@ import 'package:search_page/search_page.dart';
 import 'package:provider/provider.dart';
 import '../providers/comics.dart';
 
+import './comic_tile.dart';
+
 class AppSearch extends StatelessWidget {
   const AppSearch({super.key});
 
@@ -15,17 +17,10 @@ class AppSearch extends StatelessWidget {
           showSearch(
               context: context,
               delegate: SearchPage(
-                builder: (com) => ListTile(
-                  title: Text(com.name),
-                  subtitle: Text(com.description),
-                ),
-                filter: (com) => [
-                  com.name,
-                  com.description,
-                ],
+                builder: (com) => ComicTile(comic: com),
+                filter: (com) => [com.engName, com.rusName],
                 items: comics,
                 searchLabel: 'Поиск',
-                // searchStyle: const TextStyle(color: Colors.white)
               ));
         },
         icon: const Icon(Icons.search));

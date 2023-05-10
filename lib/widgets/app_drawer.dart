@@ -13,25 +13,25 @@ class AppDrawer extends StatelessWidget {
       child: ListView(
         children: [
           ListTile(
-            leading: Icon(Icons.home),
-            title: Text('Главная'),
+            leading: const Icon(Icons.home),
+            title: const Text('Main'),
             onTap: () => Navigator.of(context).pushReplacementNamed('/'),
           ),
           ListTile(
-            leading: Icon(Icons.list),
-            title: Text('Каталог'),
+            leading: const Icon(Icons.list),
+            title: const Text('Catalog'),
             onTap: () => Navigator.of(context)
                 .pushReplacementNamed(CatalogScreen.routeName),
           ),
           ListTile(
-            leading: Icon(Icons.favorite),
-            title: Text('Избранное'),
+            leading: const Icon(Icons.favorite),
+            title: const Text('Favorite'),
             onTap: () => Navigator.of(context)
                 .pushReplacementNamed(FavoriteScreen.routeName),
           ),
           ListTile(
-            leading: Icon(Icons.menu_book),
-            title: Text('Читаю'),
+            leading: const Icon(Icons.menu_book),
+            title: const Text('In progress'),
             onTap: () => Navigator.of(context)
                 .pushReplacementNamed(ReadingScreen.routeName),
           )

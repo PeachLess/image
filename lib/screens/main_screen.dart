@@ -24,19 +24,35 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<Comics>(context);
+    final catalogList = provider.items;
+    final favoriteList = provider.favoriteItems;
+    final readingList = provider.readingItems;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('ManLang'),
         actions: const [AppSearch()],
       ),
       body: SingleChildScrollView(
-        child: Column(children: const [
-          SizedBox(
+        child: Column(children: [
+          const SizedBox(
             height: 20,
           ),
-          ComicCarousel(name: 'Last viewed'),
-          ComicCarousel(name: 'New'),
-          ComicCarousel(name: 'Most viewed'),
+          ComicCarousel(
+            name: 'Catalog',
+            comics: catalogList,
+          ),
+          if (favoriteList.isNotEmpty)
+            ComicCarousel(
+              name: 'Favorite',
+              comics: favoriteList,
+            ),
+          if (readingList.isNotEmpty)
+            ComicCarousel(
+              name: 'In progress',
+              comics: readingList,
+            ),
         ]),
       ),
       drawer: const AppDrawer(),
